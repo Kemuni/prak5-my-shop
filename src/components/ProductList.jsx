@@ -14,7 +14,7 @@ const ProductList = () => {
     useEffect(() => {
         dispatch(loadProducts());
     }, [dispatch]);
-    const filteredProducts = category === 'Все'
+    const filteredProducts = category === 'all'
         ? items
         : items.filter((product) => product.category === category);
     const searchedProducts = filteredProducts.filter((product) =>

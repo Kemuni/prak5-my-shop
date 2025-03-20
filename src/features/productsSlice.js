@@ -15,7 +15,7 @@ const productsSlice = createSlice({
         items: [],
         status: 'idle',
         error: null,
-        category: 'Все',
+        category: 'all',
         sortBy: 'default',
         searchQuery: '', // Добавляем состояние для поискового запроса
     },
