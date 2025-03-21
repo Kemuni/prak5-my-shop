@@ -6,6 +6,7 @@ import ProductCard from './ProductCard';
 import FilterPanel from './FilterPanel';
 import SortPanel from './SortPanel';
 import SearchBar from './SearchBar';
+import {Typography} from "@mui/material";
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -26,18 +27,24 @@ const ProductList = () => {
         if (sortBy === 'rating') return b.rating - a.rating;
         return 0;
     });
-    if (status === 'loading') return <div>Loading...</div>;
-    if (status === 'failed') return <div>Error loading products.</div>;
+    if (status === 'loading') return <Typography variant='h2'>Загрузка...</Typography>;
+    if (status === 'failed') return <Typography variant='h2'>Не удалось получить продукты :(</Typography>;
     return (
         <div>
             <FilterPanel onFilterChange={(category) => dispatch(setCategory(category))}/>
             <SortPanel onSortChange={(sortBy) => dispatch(setSortBy(sortBy))}/>
             <SearchBar onSearchChange={(query) => dispatch(setSearchQuery(query))}/>
-            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-                {sortedProducts.map((product) => (
-                    <ProductCard key={product.id} product={product}/>
-                ))}
-            </div>
+            {
+                sortedProducts.length !== 0
+                    ? (<div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 30}}>
+                            {sortedProducts.map((product) => (
+                                <ProductCard key={product.id} product={product}/>
+                            ))}
+                        </div>)
+                    :
+                    <Typography variant='h2'>Нет подходящих товаров :(</Typography>
+            }
+
         </div>
     );
 };
