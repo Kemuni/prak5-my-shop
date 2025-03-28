@@ -44,9 +44,9 @@ const ProductCard = ({product}) => {
                     { quantityInCart !== 0
                         ? (
                             <Box sx={{width: 1.0, display: 'flex', gap: 5}}>
-                                <IconButton sx={{flexGrow: 1, borderRadius: 0}}  onClick={() => dispatch(addToCart(product))}><AddOutlinedIcon/></IconButton>
-                                <Typography sx={{margin: 'auto'}} variant="p">{quantityInCart}</Typography>
                                 <IconButton sx={{flexGrow: 1, borderRadius: 0}} onClick={() => dispatch(removeFromCart(product))}><RemoveOutlinedIcon/></IconButton>
+                                <Typography sx={{margin: 'auto'}} variant="p">{quantityInCart}</Typography>
+                                <IconButton sx={{flexGrow: 1, borderRadius: 0}}  onClick={() => dispatch(addToCart(product))}><AddOutlinedIcon/></IconButton>
                             </Box>
                             )
                         : (
